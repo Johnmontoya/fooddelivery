@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { Icons } from "../icons";
 
@@ -23,8 +23,10 @@ function Footer() {
         behavior: 'smooth',
       });
     };
-    
-    window.addEventListener('scroll', toggleVisible);
+
+    useEffect(() => {
+      window.addEventListener('scroll', toggleVisible);
+    }, []);   
 
   return (
     <>
