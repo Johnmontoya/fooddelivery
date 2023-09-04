@@ -1,8 +1,9 @@
+'use client';
+import { useEffect, useState } from "react";
 import type { NavbarItem } from "@/constants/types";
 import Image from "next/image";
 import Logo from "../../public/images/logo.png";
 import { Button } from "./ui/button";
-import { siteConfig } from "@/config/site";
 import Link from "next/link";
 
 import { cn } from "@/lib/util";
@@ -14,10 +15,33 @@ interface NavbarProps {
   items?: NavbarItem[];
 }
 
-export const Navbar: React.FC<NavbarProps> = async ({ children, items }) => {
+export const Navbar: React.FC<NavbarProps> = ({ children, items }) => {	
+
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+	  const handleScroll = () => {
+		if (window.scrollY > 50) {
+		  setScrolled(true);
+		} else {
+		  setScrolled(false);
+		}
+	  };
+  
+	  window.addEventListener('scroll', handleScroll);
+  
+	  return () => {
+		window.removeEventListener('scroll', handleScroll);
+	  };
+	}, []);
+
+	const navbarClass = scrolled ? 'opacity-95 bg-slate-950 h-16 z-40' : 'h-32 z-40';
+	const logoClass = scrolled ? '-mt-5 w-12 h-12' : 'h-24 sm:h-24';
+	const menuClass = scrolled ? '-mt-4.5' : 'mt-4';
+	const cartClass = scrolled ? '-mt-2.5' : '';
+
   return (
-    <div className="fixed w-full z-100" style={{zIndex: 100}}>
-      <nav className="border-gray-200 py-5 h-32">
+    <nav className={cn(navbarClass, 'border-gray-200 py-6')}>
         <div className="max-w-7xl grid grid-cols-2 md:grid-cols-3 items-center px-4 mx-auto">
 			<div className="w-full">
 				<Link href="/" className="items-center gap-x-2">
@@ -25,13 +49,13 @@ export const Navbar: React.FC<NavbarProps> = async ({ children, items }) => {
 					src={Logo}
 					width={96}
 					alt="Logo Pizza"
-					className="logo h-24 mr-3 sm:h-24"
+					className={cn(logoClass, "mr-3")}
 					/>
 				</Link>
 			</div>
 			<div className="w-full justify-center items-center hidden md:flex">
 				{items?.length ? (
-					<ul className="list-menu w-full justify-center flex mt-4 font-semibold flex-row space-x-8">
+					<ul className={cn(menuClass, "w-full justify-center flex font-semibold flex-row space-x-8")}>
 					{items?.map((item, index) => (
 						<li key={index}>
 						<Link
@@ -51,16 +75,15 @@ export const Navbar: React.FC<NavbarProps> = async ({ children, items }) => {
 				) : null}
 			</div>
 			<div className="w-full flex justify-end items-center">
-				<Button variant={"secondary"} className="bg-red-600 hover:bg-red-800">
-					<Icons.ShoppingCart className="w-8 text-white"/>
+				<Button variant={"secondary"} className={cn(cartClass, "h-9 bg-red-600 hover:bg-red-800 z-40")}>
+					<Icons.ShoppingCart className="w-6 text-white"/>
 				</Button>				
 				<div className="w-20 ml-4 flex justify-center md:hidden">
 					<MobileNav items={items}>{children}</MobileNav>	
 				</div>			
 			</div>			
 		</div>
-      </nav>
-    </div>
+    </nav>
   );
 };
 

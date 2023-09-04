@@ -15,7 +15,7 @@
 .delivery{
   position: absolute;
   background-image: url('../../public/images/fondo.jpg');
-  z-index: -1;
+  z-index: 1;
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -24,24 +24,4 @@
 
 .text-shadow{
   text-shadow: 1px 1px 2px black;
-}
-
-nav.scrolled{
-  opacity: 0.99;
-  height: 64px;
-  background-color: #020617;  
-}
-
-.logo.scrolled{
-  margin-top: -20px;
-  width: 50px;
-  height: 50px;
-}
-
-.cart.scrolled{
-  margin-top: -14px;
-}
-
-.list-menu.scrolled{
-  margin-top: -20px;
 }

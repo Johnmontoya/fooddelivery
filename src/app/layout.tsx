@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto_Condensed } from 'next/font/google'
 import { navbarItems } from '@/config/navbar'
+import { Header } from '@/components/header'
 
 const robotoCondensed = Roboto_Condensed({
   weight: ['300', '400', '700'],
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={robotoCondensed.className}>
-        <Navbar items={navbarItems}/>
+        <Header />
         {children}
       </body>
     </html>
