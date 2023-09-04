@@ -64,6 +64,7 @@ import {
 	MessageSquare,
 	X,
 	LucideIcon,
+	MapPin,
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -134,6 +135,7 @@ export const Icons = {
 	PlusCircleIcon,
 	Send,
 	MessageSquare,
+	MapPin,
 	Loading: Loader2,
 };
 
