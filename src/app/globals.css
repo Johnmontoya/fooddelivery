@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 .banner{
-  position: absolute;
   background-image: url('../../public/images/header.jpg');
   z-index: 1;
   width: 100%;
@@ -13,7 +12,6 @@
 }
 
 .delivery{
-  position: absolute;
   background-image: url('../../public/images/fondo.jpg');
   z-index: 1;
   width: 100%;
@@ -22,8 +20,14 @@
   background-repeat: no-repeat;
 }
 
-.footer{
-  position: absolute;
+.menu{  
+  background-image: url('../../public/images/menu.jpg');
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer{  
   background-image: url('../../public/images/footer.jpg');
   z-index: 1;
   width: 100%;

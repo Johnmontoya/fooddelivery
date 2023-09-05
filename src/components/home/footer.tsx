@@ -24,15 +24,14 @@ function Footer() {
       });
     };
 
-    useEffect(() => {
+    if(typeof window !== 'undefined'){
       window.addEventListener('scroll', toggleVisible);
-    }, []);   
+    } 
 
   return (
     <>
-      <section className="w-full h-80 md:h-96 relative">
-        <div className="footer"></div>
-        <footer className="z-20 flex flex-col absolute inset-0 space-y-3 md:space-y-10 justify-center m-6 md:m-10">
+      <section className="footer w-full h-80 md:h-96 relative">        
+        <footer className="z-20 flex flex-col space-y-3 md:space-y-10 justify-center m-6 md:m-10">
           <nav className="flex justify-center flex-wrap gap-2 md:gap-6 text-gray-500 font-medium">
             <a className="hover:text-gray-900" href="#">
               Menú |

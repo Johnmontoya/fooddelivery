@@ -1,8 +1,8 @@
 import type { SiteConfig } from '@/constants/types';
 
 export const siteConfig: SiteConfig = {
-	name: 'Contechia',
-	description: 'Descripción de Contechia',
+	name: 'Food Delivery Pizzeria',
+	description: 'Pizzeria',
 	url: 'https://contechia.vercel.app',
 	ogImage: 'https://i.imgur.com/AhynwCl.jpg',
 	links: {
